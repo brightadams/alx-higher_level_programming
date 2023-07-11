@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 """
-    function that returns the number
-    of lines of a text file:
+    function that writes a string to a text file (UTF8)
+    and returns the number of characters written:
 
-    Prototype: def number_of_lines(filename=""):
+    Prototype: def write_file(filename="", text=""):
     You must use the with statement
-    You don’t need to manage file permission or
-    file doesn't exist exceptions.
+    You don’t need to manage file permission exceptions.
+    Your function should create the file if doesn’t exist.
+    Your function should overwrite the content of the file
+    if it already exists.
 """
 
 
-def number_of_lines(filename=""):
-    """ return the number of lines of a file """
-    i = 0
-    with open(filename, encoding='utf-8') as file:
-        for line in file:
-            i += 1
-    return i
+def write_file(filename="", text=""):
+    """ write string to a file """
+    with open(filename, mode="w", encoding='utf-8') as file:
+        return (file.write(text))

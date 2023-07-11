@@ -1,43 +1,29 @@
 #!/usr/bin/python3
 """
-    class Student that defines a student by:
-        (based on 11-student.py)
+    Technical interview preparation:
 
-    Public instance attributes:
-        first_name
-        last_name
-        age
-    Instantiation with first_name, last_name and age:
-    def __init__(self, first_name, last_name, age):
-    Public method def to_json(self, attrs=None): that
-    retrieves a dictionary representation of a Student instance
-    (same as 10-class_to_json.py):
-        If attrs is a list of strings, only attribute
-        names contained in this list must be retrieved.
-        Otherwise, all attributes must be retrieved
-    You are not allowed to import any module
+    You are not allowed to google anything
+    Whiteboard first
+
+    Create a function def pascal_triangle(n): that
+    returns a list of lists of integers representing
+    the Pascal’s triangle of n:
+
+    Returns an empty list if n <= 0
+    You can assume n will be always an integer
 """
 
 
-class Student:
-    """ class to create a dict obj """
-
-    def __init__(self, first_name, last_name, age):
-        """ initialization for Student object """
-        self.age = age
-        self.last_name = last_name
-        self.first_name = first_name
-
-    def to_json(self, attrs=None):
-        """ retrieves a dictionary representation """
-        dic = {}
-        if type(attrs) != list:
-            return self.__dict__
-        else:
-            for item in attrs:
-                if type(item) != str:
-                    return self.__dict__
-            for key in self.__dict__:
-                if key in attrs:
-                    dic[key] = self.__dict__[key]
-        return dic
+def pascal_triangle(n):
+    """ makes a list of lists representing a pascal tringle """
+    lista = []
+    if n <= 0:
+        return lista
+    if n >= 1:
+        lista.append([1])
+    for i in range(1, n):
+        lista.append([1])
+        for j in range(len(lista[i - 1]) - 1):
+            lista[i].append(lista[i - 1][j] + lista[i - 1][j + 1])
+        lista[i].append(1)
+    return lista
